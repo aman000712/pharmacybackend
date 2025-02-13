@@ -56,14 +56,20 @@ import { join } from 'path';
 
 
     TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'Amanxtteri0007@',
-      database: 'pharmacy',
-      entities: [Herosection, Fileupload, BannerSection,Revolutionize,Keyfeature,Testimonialssection, Aboutsection, Tailored, Connect, Pricingplan, Discoverpointsection, Faqsection, Transformpointsection, Progressbar, Whyussection, Visionsection, Pharmacysection],
-      synchronize: true
+      type: 'postgres',
+      // url: "postgres://postgres.arwgfqkutlsocuborubz:PSEsndbIs41vOHyg@aws-0-us-east-1.pooler.supabase.com:6543/postgres&supa=base-pooler.x",
+      url:'postgresql://postgres:PSEsndbIs41vOHyg@db.arwgfqkutlsocuborubz.supabase.co:5432/postgres',
+      ssl: {
+        rejectUnauthorized: false,  // Accept self-signed certificates
+      },
+      // type: 'mysql',
+      // host: 'localhost',
+      // port: 3306,
+      // username: 'root',
+      // password: 'Amanxtteri0007@',
+      // database: 'pharmacy',
+      entities: [Herosection, Fileupload, BannerSection, Revolutionize, Keyfeature, Testimonialssection, Aboutsection, Tailored, Connect, Pricingplan, Discoverpointsection, Faqsection, Transformpointsection, Progressbar, Whyussection, Visionsection, Pharmacysection],
+      synchronize: true,
     }),
 
 
