@@ -16,11 +16,12 @@ export class FileuploadController {
   @Post()
   @ApiConsumes('multipart/form-data')
   @UseInterceptors(FileInterceptor('image'))
-  async create(@UploadedFile() image: Express.Multer.File, @Body() createFileuploadDto: CreateFileuploadDto) {
-    if (!image) throw new Error('No file uploaded');
+  async create(@Body() createFileuploadDto: CreateFileuploadDto,
+    @UploadedFile() image: any) {
+    // if (!image) throw new Error('No file uploaded');
 
     const imageUrl = await uploadToVercelBlob(image);
-    createFileuploadDto.image = imageUrl; // Store the file URL in DB
+    createFileuploadDto.image = imageUrl; 
 
     return this.fileuploadService.fileuploadcreate(createFileuploadDto);
   }
