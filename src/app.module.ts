@@ -40,6 +40,7 @@ import { Keyfeature } from './keyfeatures/entities/keyfeature.entity';
 import { MulterModule } from '@nestjs/platform-express';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { UserModule } from './user/user.module';
 @Module({
   imports: [
 
@@ -57,7 +58,6 @@ import { join } from 'path';
 
     TypeOrmModule.forRoot({
       type: 'postgres',
-      // url: "postgres://postgres.arwgfqkutlsocuborubz:PSEsndbIs41vOHyg@aws-0-us-east-1.pooler.supabase.com:6543/postgres&supa=base-pooler.x",
       url:'postgresql://postgres:PSEsndbIs41vOHyg@db.arwgfqkutlsocuborubz.supabase.co:5432/postgres',
       ssl: {
         rejectUnauthorized: false,  // Accept self-signed certificates
@@ -68,8 +68,10 @@ import { join } from 'path';
       // username: 'root',
       // password: 'Amanxtteri0007@',
       // database: 'pharmacy',
+      connectTimeoutMS: 10000,
       entities: [Herosection, Fileupload, BannerSection, Revolutionize, Keyfeature, Testimonialssection, Aboutsection, Tailored, Connect, Pricingplan, Discoverpointsection, Faqsection, Transformpointsection, Progressbar, Whyussection, Visionsection, Pharmacysection],
       synchronize: true,
+      // connectTimeout: 60000,  // 60 seconds
     }),
 
 
@@ -124,6 +126,9 @@ import { join } from 'path';
 
 
     PharmacysectionModule,
+
+
+    UserModule,
 
 
 
